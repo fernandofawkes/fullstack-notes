@@ -9,7 +9,7 @@ usersRouter.post('/', async (req, response) => {
       username
     });
 
-    if(exists) return response.status(400).json({error: 'username must be unique'});
+    if(exists) return response.status(400).json({error: 'username already in use'});
 
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
